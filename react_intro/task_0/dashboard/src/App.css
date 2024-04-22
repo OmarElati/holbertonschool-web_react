@@ -1,0 +1,54 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "aktiv-grotesk", sans-serif;
+}
+
+:root {
+  --Holberton-Red: #e0003c;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+hr {
+  color: var(--Holberton-Red);
+}
+
+.App-header {
+  background-color: #fff;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--Holberton-Red);
+  font-family: "aktiv-grotesk", sans-serif;
+}
+
+/* App-body */
+
+.App-body {
+  background-color: #fff;
+  min-height: 60vh;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-body p {
+  margin: 30px;
+}
+/* App-footer */
+
+.App-footer {
+  background-color: #fff;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  font-style: italic;
+}
