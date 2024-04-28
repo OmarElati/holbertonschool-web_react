@@ -1,0 +1,31 @@
+.Notifications {
+  border: 2px dashed var(--Holberton-Red);
+  padding: 10px;
+  font-size: calc(10px + 1vmin);
+}
+
+.Notifications p{
+  font-weight: bold;
+}
+
+.Notifications ul{
+  list-style-type: none;
+  padding: 20px;
+  padding-left: 3%;
+}
+
+.Notifications ul li {
+  list-style-type: disc;
+}
+
+.Notifications ul li[data-priority="default"] {
+  color: blue;
+}
+
+.Notifications ul li[data-priority="urgent"] {
+  color: red;
+}
+
+.Notifications ul li:nth-last-child(1) {
+  color: red;
+}
