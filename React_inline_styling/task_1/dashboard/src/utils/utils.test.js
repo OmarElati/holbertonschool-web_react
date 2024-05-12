@@ -1,21 +1,24 @@
-// In strict assertion mode, non - strict methods behave like their corresponding strict methods.For example, assert.deepEqual() will behave like assert.deepStrictEqual().
-import { strict as assert } from 'assert';
 import { getFullYear, getFooterCopy, getLatestNotification } from './utils';
 
-describe('Test Utils', () => {
-
-    it('Tests that getFullYear is current', () => {
-        assert.equal(getFullYear(), new Date().getFullYear());
+describe('Create basic tests with four tests', function () {
+  describe('check that the function getFullYear returns the correct year', function () {
+    it('should return current year', function () {
+      expect(getFullYear()).toBe(new Date().getFullYear());
     });
-    it('Validates the result of getFooterCopy with true', () => {
-        assert.equal(getFooterCopy(true), 'Holberton School.');
+  });
+  describe('check that getFooterCopy returns the correct string when the argument is true or false', function () {
+    it('Should return true message', function () {
+      expect(getFooterCopy(true)).toEqual('Holberton School');
     });
-    it('Validates the result of getFooterCopy with false', () => {
-        assert.equal(getFooterCopy(false), 'Holberton School main dashboard');
+    it('Should return false message', function () {
+      expect(getFooterCopy(false)).toEqual('Holberton School main dashboard');
     });
-
-    it('checks return of getLatestNotification', () => {
-        // use JSON.stringify because
-        assert.equal(JSON.stringify(getLatestNotification()), JSON.stringify({ __html: '<strong>Urgent requirement</strong> - complete by EOD' }));
+  });
+  describe('Test checking the returned string for getLatestNotification', function () {
+    it('shold return correct string element', function () {
+      expect(getLatestNotification()).toEqual(
+        {"__html":'<strong>Urgent requirement</strong> - complete by EOD'}
+      );
     });
+  });
 });

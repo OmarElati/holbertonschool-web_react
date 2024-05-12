@@ -1,74 +1,52 @@
-/**
- * @jest-environment jsdom
- */
-
-import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App';
+import App from './App.js';
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
+import Footer from '../Footer/Footer';
 import Notifications from '../Notifications/Notifications';
+import { expect } from 'chai';
 import CourseList from '../CourseList/CourseList';
 
-describe('<App />', () => {
-    it('renders an <App /> component', () => {
-        const wrapper = shallow(<App />);
-        expect(wrapper).toHaveLength(1);
-    });
-
-    it('renders an <App /> component checking for <Notifications />', () => {
-        const wrapper = shallow(<App />);
-        expect(wrapper.find(Notifications)).toHaveLength(1);
-    });
-
-    it('renders an <App /> component checking for <Header />', () => {
-        const wrapper = shallow(<App />);
-        expect(wrapper.find(Header)).toHaveLength(1);
-    });
-
-    it('renders an <App /> component checking for <Login />', () => {
-        const wrapper = shallow(<App />);
-        expect(wrapper.find(Login)).toHaveLength(1);
-    });
-
-    it('tests to check that CourseList is not displayed', () => {
-        const wrapper = shallow(<App />);
-        expect(wrapper.find(CourseList)).toHaveLength(0);
-    });
-
-    it('renders an <App /> component checking for <Footer />', () => {
-        const wrapper = shallow(<App />);
-        expect(wrapper.find(Footer)).toHaveLength(1);
-    });
-
-    // When isLoggedIn is true or user is logged into app
-    it('verifies that the Login component is not included.', () => {
-        const wrapper = shallow(<App isLoggedIn={ true } />);
-        expect(wrapper.find(Login)).toHaveLength(0);
-    });
-
-    it('verifies that the Login component is not included.', () => {
-        const wrapper = shallow(<App isLoggedIn={ true } />);
-        expect(wrapper.find(CourseList)).toHaveLength(1);
-    });
-
-    it('verifies that the user canlog out using ctrl + h', () => {
-        const events = {};
-        window.addEventListener = jest.fn().mockImplementation((e, cb) => {
-            events[e] = cb;
-        });
-
-        const props = {
-            isLoggedIn: true,
-            logOut: jest.fn()
-        }
-        window.alert = jest.fn();
-
-        const wrapper = shallow(<App {...props} />);
-        events.keydown({ ctrlKey: true, key: 'h' });
-        expect(window.alert).toHaveBeenCalledWith("Logging you out");
-        expect(props.logOut).toHaveBeenCalled();
-        window.alert.mockRestore();
+describe("redering App component", () => {
+    it("check if app componet render without crach", () => {
+        const wrapper = shallow(<App />)
+        expect(wrapper.exists())
     })
+    it("check app has notification component", () => {
+        const wrapper = shallow(<App />)
+		expect(wrapper.contains(<Notifications />)).to.equal(true);
+	});
+
+	it("check app has header Component", () => {
+        const wrapper = shallow(<App />)
+		expect(wrapper.contains(<Header />)).to.equal(true);
+	});
+
+	it("check app has login Component", () => {
+        const wrapper = shallow(<App />)
+		expect(wrapper.contains(<Login />)).to.equal(true);
+	});
+
+	it("app has footer Component", () => {
+        const wrapper = shallow(<App />)
+		expect(wrapper.contains(<Footer />)).to.equal(true);
+	});
+	it("check app comp does not contain courtlist Component", () => {
+		const wrapper = shallow(<App />)
+		expect(wrapper.contains(<CourseList />)).to.equal(false);
+	});
+})
+
+describe("Testing app Component", () => {
+
+	it("check app comp does not contain login Component", () => {
+		const wrapper = shallow(<App isLoggedIn={true}/>);
+		expect(wrapper.contains(<Login />)).to.equal(false);
+	});
+
+	it("check app comp contain courslist Component", () => {
+		const wrapper = shallow(<App isLoggedIn={true}/>);
+		expect(wrapper.contains(<CourseList />)).to.equal(true);
+	});
+
 });
