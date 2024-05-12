@@ -1,89 +1,40 @@
-* {
-  margin: 0px;
-  padding: 0px;
+:root {
+	--primary-color: #E11D3F;
+	font: 18px Helvetica, Arial, sans-serif;
 }
 
-:root {
-  --Holberton-Red: #e0003c;
+.App {
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: column;
+}
+
+.App-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: var(--primary-color);
+	border-bottom: 3px solid var(--primary-color);
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 200px;
+	width: 200px;
 }
-
-
-
-.App-header {
-  background-color: #fff;
-  min-height: 20vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--Holberton-Red);
-  font-family: "aktiv-grotesk", sans-serif;
-  border-bottom: 3px solid var(--Holberton-Red)
-}
-
-/* App-body */
 
 .App-body {
-  background-color: #fff;
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 1vmin);
-  padding: 32px;
+	display: flex;
+	flex-direction: column;
+	margin: 3rem;
+	min-height: 50vh;
 }
-
-.App-body p {
-  font-weight: bold;
-  padding-bottom: 10px;
-}
-.form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-.App-body label span {
-  padding-left: 2px;
-  font-weight: bold;
-  margin-right: 16px;
-}
-
-.App-body input {
-  height: 26px;
-  line-height: 16px;
-  font-size: 16px;
-  padding-left: 2px;
-  margin-top: 2px;
-  border: .5px solid lightgrey;
-  border-radius: 5px;
-}
-
-.App-body button {
-  width: 40px;
-  height: 26px;
-  background-color: white;
-  font-size: 15px;
-  border: .5px solid lightgrey;
-  border-radius: 5px;
-}
-/* App-footer */
 
 .App-footer {
-  background-color: #fff;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 1vmin);
-  font-style: italic;
-  font-weight: bold;
-  border-top: 3px solid var(--Holberton-Red);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-top: 3px solid var(--primary-color);
+	padding: 1rem;
+	font-style: italic;
 }

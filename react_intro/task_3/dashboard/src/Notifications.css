@@ -1,31 +1,16 @@
+:root {
+	--primar-color: #E11D3F;
+}
+
 .Notifications {
-  border: 2px dashed var(--Holberton-Red);
-  padding: 10px;
-  font-size: calc(10px + 1vmin);
+	border: 1px solid var(--primar-color);
+	padding: 1rem;
 }
 
-.Notifications p{
-  font-weight: bold;
+[data-priority="default"] {
+	color: blue;
 }
 
-.Notifications ul{
-  list-style-type: none;
-  padding: 20px;
-  padding-left: 3%;
-}
-
-.Notifications ul li {
-  list-style-type: disc;
-}
-
-.Notifications ul li[data-priority="default"] {
-  color: blue;
-}
-
-.Notifications ul li[data-priority="urgent"] {
-  color: red;
-}
-
-.Notifications ul li:nth-last-child(1) {
-  color: red;
+[data-priority="urgent"] {
+	color: red;
 }
