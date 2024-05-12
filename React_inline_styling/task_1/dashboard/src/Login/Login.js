@@ -1,70 +1,65 @@
-import './Login.css';
-import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import React, { Component } from 'react'
+import { StyleSheet, css } from 'aphrodite'
+import WithLoggingHOC from '../HOC/WithLogging'
 
-const styles = StyleSheet.create({
-   /* App-body */
-    appBody: {
-        minHeight: '60vmin',
-        padding: '32px',
-    },
-
-    appBodyParagraph: {
-        fontWeight: 'bold',
-    },
-
-    form: {
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        gap: '8px',
-        alignItems: 'center',
-    },
-
-    appBodyLabelSpan: {
-        paddingLeft: '2px',
-        fontWeight: 'bold',
-        marginRight: '16px',
-    },
-
-    appBodyInput: {
-        /* display: block, */
-        height: '32px',
-        lineHeight: '16px',
-        fontSize: '16px',
-        paddingLeft: '2px',
-        marginTop: '2px',
-    },
-
-    appBodyButton: {
-        borderRadius: '25px',
-        width: '150px',
-        height: '32px',
-        backgroundColor: 'white', /* #ff4242 */
-        fontSize: '24px',
-        border: '.5px solid lightgrey',
-    },
-});
-
-function Login() {
-    return (
-        <div className={css(styles.appBody)} id="Login">
-            <p className={css(styles.appBodyParagraph)}>Login to access the full dashboard</p>
-            <div className={css(styles.form)}>
-                <label htmlFor="email">
-                    <span className={css(styles.appBodyLabelSpan)}>Email:</span>
-                    <input className={css(styles.appBodyInput)} type="email" name="email" id="email" />
-                </label>
-
-                <label htmlFor="password">
-                    <span className={css(styles.appBodyLabelSpan)}>Password:</span>
-                    <input className={css(styles.appBodyInput)} type="password" name="password" id="pwd" />
-                </label>
-
-                <button className={css(styles.appBodyButton)} onClick={ () => { } }>OK</button>
-            </div>
-        </div>
-    );
+class Login extends Component {
+	render() {
+		return (
+			<React.Fragment>
+				<div className="App">
+					<main className={css(loginStyles.appBody)}>
+						<p>Login to access the full dashboard</p>
+						<div className={css(loginStyles.inputs)}>
+							<label className={css(loginStyles.label)} htmlFor="email" onClick={() => {
+								// select corresponding input
+								document.getElementById('password').focus();
+							}}>Email</label>
+							<input type="email" id="email" className={css(loginStyles.input)} />
+							<label className={css(loginStyles.label)} htmlFor="password" onClick={() => {
+								// select corresponding input
+								document.getElementById('password').focus();
+							}}>Password</label>
+							<input type="password" id="password" className={css(loginStyles.input)} />
+							<button className={css(loginStyles.button)}>OK</button>
+						</div>
+					</main>
+				</div>
+			</React.Fragment>
+		)
+	}
 }
 
-export default Login;
+const primaryColor = '#E11D3F';
+
+const loginStyles = StyleSheet.create({
+	appBody: {
+		display: 'flex',
+		flexDirection: 'column',
+		marginBottom: '3rem',
+		paddingTop: '1rem',
+		minHeight: '50vh',
+	},
+
+	inputs: {
+		display: 'flex',
+		flexDirection: 'row',
+	},
+
+	input: {
+		height: '15px',
+		marginLeft: '0.2rem',
+		marginTop: '0.5rem',
+	},
+
+	label: {
+		marginTop: '0.5rem',
+	},
+
+	button: {
+		height: '21px',
+		marginTop: '0.6rem',
+	}
+})
+
+
+export default WithLoggingHOC(Login)

@@ -1,14 +1,22 @@
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
+import { StyleSheetTestUtils } from 'aphrodite';
+import React from 'react';
 import Footer from './Footer';
 
-describe("redering footer component", () => {
-    it("check if footer componet render without crach", () => {
-        const wrapper = shallow(<Footer />)
-        expect(wrapper.exists())
-    })
-    it("check footer has text Copyright", () => {
-        const wrapper = shallow(<Footer />);
-		expect(wrapper.children('p').html()).to.include('Copyright');
+
+// shallow render footer component
+describe('<Footer />', () => {
+	beforeEach(() => {
+		StyleSheetTestUtils.suppressStyleInjection();
 	});
-})
+
+	it('Tests that Footer renders without crashing', () => {
+		const wrapper = shallow(<Footer />);
+		expect(wrapper.exists()).toBe(true);
+	})
+
+	it('Contains the text "Copyright"', () => {
+		const wrapper = shallow(<Footer />);
+		expect(wrapper.text()).toContain('Copyright');
+	})
+});

@@ -1,19 +1,21 @@
-
-import React from 'react';
-import { expect } from 'chai';
 import { shallow } from 'enzyme';
+import { StyleSheetTestUtils } from 'aphrodite';
 import CourseList from './CourseList';
 
-describe("Testing the courselist comp Component", () => {
 
-	it("check courslist comp rendered without crashing", () => {
-        const wrapper = shallow(<CourseList />);
-		expect(wrapper).to.not.be.an('undefined');
+// shallow render CourseList component
+describe('<CourseList />', () => {
+	beforeEach(() => {
+		StyleSheetTestUtils.suppressStyleInjection();
 	});
 
-	it("check courslist comp renders three NotificationItem", () => {
-        const wrapper = shallow(<CourseList />);
-		expect(wrapper.find('CourseListRow')).to.have.lengthOf(5);
-	});
+	it(`Renders CourseList component without crashing`, () => {
+		const wrapper = shallow(<CourseList />);
+		expect(wrapper.exists()).toBe(true);
+	})
 
-});
+	it(`Renders several CourseListRow Components`, () => {
+		const wrapper = shallow(<CourseList />);
+		expect(wrapper.find('CourseListRow').length).toBe(2);
+	})
+})
