@@ -1,27 +1,30 @@
-import React from "react";
-import './Login.css';
+import React, { Component } from 'react'
+import './Login.css'
 
-function Login() {
-  return (
-    <React.Fragment>
-      <div className="App-body">
-        <p>
-          Login to access the full dashboard
-        </p>
-        <div className="form">
-          <label htmlFor="email">email</label><br />
-          <input type="email" id="email" name="email"></input><br />
-          <br />
-
-          <label htmlFor="password">password</label><br />
-          <input type="password" id="password" name="password"></input><br />
-          <br />
-
-          <button>OK</button>
-        </div>
-      </div>
-    </React.Fragment>
-  );
+export default class App extends Component {
+	render() {
+		return (
+			<React.Fragment>
+				<div className="App">
+					<body className="App-body">
+						<p>Login to access the full dashboard</p>
+						<div className="inputs">
+							<label htmlFor="email" onClick={() => {
+								// select corresponding input
+								document.getElementById('password').focus();
+							}}>Email</label>
+							<input type="email" id="email" />
+							<label htmlFor="password" onClick={() => {
+								// select corresponding input
+								document.getElementById('password').focus();
+							}}>Password</label>
+							<input type="password" id="password" />
+							<button>OK</button>
+						</div>
+					</body>
+				</div>
+			</React.Fragment>
+		)
+	}
 }
 
-export default Login;

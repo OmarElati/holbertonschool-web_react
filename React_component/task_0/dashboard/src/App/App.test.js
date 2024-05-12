@@ -1,53 +1,47 @@
 import { shallow } from 'enzyme';
-import App from './App.js';
-import Header from '../Header/Header';
+import React from 'react';
+import App from './App';
 import Login from '../Login/Login';
-import Footer from '../Footer/Footer';
-import Notifications from '../Notifications/Notifications';
-import { expect } from 'chai';
-import CourseList from '../CourseList/CourseList';
 
 
-describe("redering App component", () => {
-    it("check if app componet render without crach", () => {
-        const wrapper = shallow(<App />)
-        expect(wrapper.exists())
-    })
-    it("check app has notification component", () => {
-        const wrapper = shallow(<App />)
-		expect(wrapper.contains(<Notifications />)).to.equal(true);
-	});
+// shallow render app component
+describe('<App />', () => {
+	it('Tests that App renders without crashing', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.exists()).toBe(true);
+	})
 
-	it("check app has header Component", () => {
-        const wrapper = shallow(<App />)
-		expect(wrapper.contains(<Header />)).to.equal(true);
-	});
+	it('Contains Header component', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.find('Header').length).toBe(1);
+	})
 
-	it("check app has login Component", () => {
-        const wrapper = shallow(<App />)
-		expect(wrapper.contains(<Login />)).to.equal(true);
-	});
+	it('Contains Login component', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.contains(<Login />)).toBe(true);
+	})
 
-	it("app has footer Component", () => {
-        const wrapper = shallow(<App />)
-		expect(wrapper.contains(<Footer />)).to.equal(true);
-	});
-	it("check app comp does not contain courtlist Component", () => {
-		const wrapper = shallow(<App />)
-		expect(wrapper.contains(<CourseList />)).to.equal(false);
-	});
-})
+	it('Contains Footer component', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.find('Footer').length).toBe(1);
+	})
 
-describe("Testing app Component", () => {
-
-	it("check app comp does not contain login Component", () => {
-		const wrapper = shallow(<App isLoggedIn={true}/>);
-		expect(wrapper.contains(<Login />)).to.equal(false);
-	});
-
-	it("check app comp contain courslist Component", () => {
-		const wrapper = shallow(<App isLoggedIn={true}/>);
-		expect(wrapper.contains(<CourseList />)).to.equal(true);
-	});
-
+	it('Tests that CourseList is not displayed', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.find('CourseList').length).toBe(0);
+	})
 });
+
+
+// describe case when isLoggedIn is true
+describe('<App />', () => {
+	it('Tests that the Login component is not rendered', () => {
+		const wrapper = shallow(<App isLoggedIn={true} />);
+		expect(wrapper.contains(<Login />)).toBe(false);
+	})
+
+	it('Tests that CourseList component is rendered', () => {
+		const wrapper = shallow(<App isLoggedIn />);
+		expect(wrapper.find('CourseList').length).toBe(1);
+	})
+})

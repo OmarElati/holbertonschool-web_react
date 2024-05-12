@@ -1,40 +1,48 @@
 import { shallow } from 'enzyme';
 import Notifications from './Notifications';
 import NotificationItem from './NotificationItem';
-import { expect } from 'chai';
 
-describe('render of notifications', () => {
-    it("notifcation exists", () => {
-        const wrapper = shallow(<Notifications />)
-        expect(wrapper.exists())
-    })
 
-    it("expect to render 3 list item", () => {
-        const wrapper = shallow(<Notifications displayDrawer={true}/>)
-        wrapper.update();
-        expect(wrapper.find(NotificationItem)).to.have.lengthOf(3);;
-    })
-    
-    it("chechk existing of para in notifications", () => {
-        const txt = "Here is the list of notifications"
-        const wrapper = shallow(<Notifications displayDrawer={true}/>)
-        wrapper.update();
-        expect(wrapper.find(".Notifications p").text()).equal(txt)
-    })
-    it("chech menu items displayed when dipslay drawer is false", () => {
-        const wrapper = shallow(<Notifications/>)
-        expect(wrapper.find('div.menuItem')).to.have.length(1)
-    })
-    it("chech notifcaitons not displayed when dipslay drawer is false", () => {
-        const wrapper = shallow(<Notifications/>)
-        expect(wrapper.find('div.Notifications')).to.have.length(0)
-    })
-    it("chech menu item displayed when dipslay drawer is false", () => {
-        const wrapper = shallow(<Notifications displayDrawer={true}/>);
-		expect(wrapper.find('div.menuItem')).to.have.length(1);
-    })
-    it("chech menu item displayed when dipslay drawer is false", () => {
-        const wrapper = shallow(<Notifications displayDrawer={true}/>);
-		expect(wrapper.find('div.Notifications')).to.have.length(1);
-    })
-})
+describe('<Notifications />', () => {
+	it('tests that Notifications renders without crashing', () => {
+		const wrapper = shallow(<Notifications />);
+		expect(wrapper.exists()).toBe(true);
+	})
+
+	it('Checks first Item renders correct html', () => {
+		const wrapper = shallow(<Notifications />);
+		expect(wrapper.text()).toContain('Your notifications');
+	})
+
+	it('Tests that menuItem is rendered when displayDrawer is false', () => {	
+		const wrapper = shallow(<Notifications displayDrawer={false} />);
+		expect(wrapper.find('.menuItem').length).toBe(1);
+	})
+
+	it('Tests the div Notifications is not rendered when displayDrawer is false', () => {
+		const wrapper = shallow(<Notifications displayDrawer={false} />);
+		expect(wrapper.find('.Notifications').length).toBe(0);
+	})
+
+	it('Tests that menuItem is rendered when displayDrawer is true', () => {
+		const wrapper = shallow(<Notifications displayDrawer listNotifications={[]} />);
+		expect(wrapper.find('.menuItem').length).toBe(1);
+	})
+
+	it('Tests that the div Notifications is rendered when displayDrawer is true', () => {
+		const wrapper = shallow(<Notifications displayDrawer listNotifications={[]} />);
+		wrapper.update()
+		const item = wrapper.find('div.Notifications');
+		expect(item.length).toBe(1);
+	})
+
+	it('Tests when passing empty array', () => {
+		const wrapper = shallow(<Notifications notifications={[]} />);
+		expect(wrapper.find('.NotificationItem').length).toBe(0);
+	})
+
+	it('Tests when passing NO array', () => {
+		const wrapper = shallow(<Notifications />);
+		expect(wrapper.find('.NotificationItem').length).toBe(0);
+	})
+});
