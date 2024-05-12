@@ -1,8 +1,10 @@
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: sans-serif; */
 }
 
 :root {
-  --Holberton-Red: #e0003c;
+  --holb-red: #FF0000;
 }

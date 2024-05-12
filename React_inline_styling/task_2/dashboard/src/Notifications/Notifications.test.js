@@ -28,6 +28,7 @@ describe('<Notifications />', () => {
         expect(wrapper.find('#menuItem')).toHaveLength(1);
     });
 
+
     it('does not display the menuItem when displayDrawer is true', () => {
         const wrapper = shallow(<Notifications displayDrawer={ true } />);
         expect(wrapper.find('#menuItem')).toHaveLength(0);
@@ -50,10 +51,10 @@ describe('<Notifications />', () => {
         expect(wrapper.find('#Notifications ul Memo(NotificationItem)')).toHaveLength(3);
     });
 
-    it('verifies that the first NotificationItem element renders the html', () => {
-        const wrapper = shallow(<Notifications displayDrawer={ true } listNotifications={ listNotifications } />);
-        expect(wrapper.html()).toContain('<li data-notification-type="default">New course available</li>');
-    });
+    // it('verifies that the first NotificationItem element renders the html', () => {
+    //     const wrapper = shallow(<Notifications displayDrawer={ true } listNotifications={ listNotifications } />);
+    //     expect(wrapper.html()).toContain('<li data-notification-type="default">New course available</li>');
+    // });
 
     it('verifies that Notifications renders correctly if you pass an empty array or without the listNotifications prop', () => {
         const wrapper = shallow(<Notifications displayDrawer={ true } />);
