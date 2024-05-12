@@ -1,14 +1,15 @@
+import React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
 import Footer from './Footer';
 
-describe("redering footer component", () => {
-    it("check if footer componet render without crach", () => {
-        const wrapper = shallow(<Footer />)
-        expect(wrapper.exists())
-    })
-    it("check footer has text Copyright", () => {
+describe('<Footer />', () => {
+    it('renders an <Footer /> component', () => {
         const wrapper = shallow(<Footer />);
-		expect(wrapper.children('p').html()).to.include('Copyright');
-	});
-})
+        expect(wrapper).toHaveLength(1);
+    });
+
+    it('renders an <Footer /> component checking for App-Footer', () => {
+        const wrapper = shallow(<Footer />);
+        expect(wrapper.find('.App-footer p').text()).toContain('Copyright');
+    });
+});

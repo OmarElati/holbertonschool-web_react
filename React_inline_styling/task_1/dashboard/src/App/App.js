@@ -8,23 +8,7 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList';
-import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
-import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../utils/utils';
-import { StyleSheet, css } from 'aphrodite';
-
-const styles = StyleSheet.create({
-  /* App-footer */
-
-  AppFooter: {
-    fontStyle: 'italic',
-    borderTop: '4px solid #FF0000',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '5vmin',
-  }
-});
 
 class App extends React.Component {
   constructor(props) {
@@ -69,19 +53,8 @@ class App extends React.Component {
         <Notifications displayDrawer={ false } listNotifications={ listNotifications } />
         <div className="App">
           <Header />
-          { isLoggedIn ?
-          <BodySectionWithMarginBottom title="Course list">
-              <CourseList listCourses={ listCourses } />
-          </BodySectionWithMarginBottom>
-           :
-          <BodySectionWithMarginBottom title="Log in to continue">
-            <Login />
-          </BodySectionWithMarginBottom>
-          }
-          <BodySection title="News from the School">
-            <p>Graduation date is January 28th!</p>
-          </BodySection>
-          <Footer className={css(styles.AppFooter)} />
+          { isLoggedIn ? <CourseList listCourses={ listCourses } /> : <Login /> }
+          <Footer />
         </div>
       </>
     )

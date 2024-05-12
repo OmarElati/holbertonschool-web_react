@@ -2,18 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CourseList.css';
 
-const rowStyle = {
-    backgroundColor: '#f5f5f5ab',
-};
-
-const headerRowStyle = {
-    backgroundColor: '#deb5b545',
-}
-
 function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
     return (
         <>
-            <tr style={isHeader ? headerRowStyle : rowStyle}>
+            <tr>
                 { isHeader && !textSecondCell && (
                     <th colSpan={ 2 }>{ textFirstCell }</th>
                 ) }

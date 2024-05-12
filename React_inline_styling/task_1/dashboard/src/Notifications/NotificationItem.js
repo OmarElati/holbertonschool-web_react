@@ -1,28 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import './Notifications.css';
 
-class NotificationItem extends React.PureComponent {
-
-  render() {
-    const { type, html, value, markAsRead, id} = this.props
-    if (html)
+// functional component ES6 shortcut
+const NotificationItem = ({ type, html, value }) => {
+    // JSX goes here
     return (
-      <li onClick={() => {markAsRead(id)}} data-priority={type} dangerouslySetInnerHTML={html}></li>
+        <li data-notification-type={ type } dangerouslySetInnerHTML={ html }>{ value }</li>
     );
-  return <li onClick={() => {markAsRead(id)}} data-priority={type}>{value}</li>;
-  }
-}
-
-
-NotificationItem.propTypes = {
-  html: PropTypes.shape({__html: PropTypes.string}),
-  type: PropTypes.string,
-  value: PropTypes.string,
-  markAsRead: PropTypes.func,
-  id: PropTypes.func
 };
 
-NotificationItem.defaultProps = {
-  type: "default"
-}
 export default NotificationItem;
