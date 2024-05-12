@@ -72,4 +72,4 @@ App.propTypes = {
 	logOut: propTypes.func,
 }
 
-export default App
+export default App;
