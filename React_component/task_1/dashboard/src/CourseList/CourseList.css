@@ -1,25 +1,19 @@
-#CourseList{
-  margin: 3rem auto;
-  max-width: 90vw;
+table {
+	display: table;
+	border: 1px solid;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
 }
 
-table{
-  width:100%;
-  border-collapse: collapse;
+tr th {
+	text-align: start;
+	border-bottom: 1px solid;
 }
 
-tbody,thead>*{
-  border: thin solid #ccc;
-}
-
-table td, table th{
-  text-align:left;
-}
-
-thead>tr:nth-child(1)>th{
-  text-align: center;
-}
-
-.courseListContainer{
-  min-height: 45vh;
+th[colSpan="2"] {
+	text-align: center;
+	border: 1px solid;
+	padding-bottom: 1rem;
 }

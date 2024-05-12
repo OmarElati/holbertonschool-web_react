@@ -1,8 +1,10 @@
-* {
-  margin: 0px;
-  padding: 0px;
+:root {
+	--primary-color: #E11D3F;
+	font: 18px Helvetica, Arial, sans-serif;
 }
 
-:root {
-  --Holberton-Red: #e0003c;
+.App {
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: column;
 }
