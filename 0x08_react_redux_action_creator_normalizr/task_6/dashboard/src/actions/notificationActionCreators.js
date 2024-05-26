@@ -6,6 +6,7 @@ export const markAsAread = (index) => {
     index,
   };
 };
+export const boundMarkAsAread = (index) => dispatch(markAsAread(index));
 
 export const setNotificationFilter = (filter) => {
   return {
@@ -13,3 +14,5 @@ export const setNotificationFilter = (filter) => {
     filter,
   };
 };
+export const boundSetNotificationFilter = (filter) =>
+  dispatch(setNotificationFilter(filter));
