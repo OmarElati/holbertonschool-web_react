@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import App, { listNotificationsInitialState } from './App';
+import App, { listNotificationsInitialState, mapStateToProps } from './App';
 import { StyleSheetTestUtils } from 'aphrodite';
 import { user, logOut, AppContext } from './AppContext';
 
@@ -81,5 +81,15 @@ describe('<App />', () => {
       </AppContext.Provider>
     );
     expect(wrapper.exists());
+  });
+
+  it("mapStateToProps returns the right object from user Login", () => {
+    let state = fromJS({
+      isUserLoggedIn: true,
+    });
+
+    const result = mapStateToProps(state);
+
+    expect(result).toEqual({ isLoggedIn: true });
   });
 });
